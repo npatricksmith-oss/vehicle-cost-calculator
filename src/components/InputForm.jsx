@@ -79,12 +79,13 @@ export default function InputForm({ values, onChange }) {
                     </label>
                     <label>
                         Loan Term (Months)
-                        <input
-                            type="number"
-                            name="loanTermMonths"
-                            value={values.loanTermMonths}
-                            onChange={handleChange}
-                        />
+                        <select name="loanTermMonths" value={values.loanTermMonths} onChange={handleChange}>
+                            <option value="36">36 Months</option>
+                            <option value="48">48 Months</option>
+                            <option value="60">60 Months</option>
+                            <option value="72">72 Months</option>
+                            <option value="84">84 Months</option>
+                        </select>
                     </label>
                 </div>
             </section>

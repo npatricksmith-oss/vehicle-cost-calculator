@@ -279,6 +279,18 @@ select:focus {
     background: rgba(255, 255, 255, 0.3);
 }
 
+.result-row-secondary {
+    margin-top: -10px;
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+.financed-amount {
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
 .sub-text {
     font-size: var(--font-size-sm);
     opacity: 0.8;

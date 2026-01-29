@@ -23,6 +23,11 @@ export default function ResultsDisplay({ results, carName }) {
                     </div>
                 </div>
 
+                <div className="result-row-secondary">
+                    <span className="metric-label--small">Amount Financed: </span>
+                    <span className="financed-amount">{formatCurrency(results.loan.loanAmount)}</span>
+                </div>
+
                 <p className="sub-text">Total {results.costs.ownershipYears}-Year Cost: {formatCurrency(results.costs.totalOwnershipCost)}</p>
             </div>
 

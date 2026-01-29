@@ -1,0 +1,224 @@
+:root {
+    /* ... (User defined vars are in index.css, we use them here) ... */
+}
+
+/* App Layout */
+.app-container {
+    max-width: 1400px;
+    /* Increased for 2-column comparison */
+    margin: 0 auto;
+    padding: var(--spacing-4);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 640px) {
+    .app-container {
+        padding: var(--spacing-8);
+        /* More padding on desktop */
+    }
+}
+
+/* Comparison Layout */
+.comparison-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.car-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    flex: 1;
+}
+
+/* Hide inactive column on mobile */
+.hidden-mobile {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .comparison-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--spacing-8);
+    }
+
+    .car-column {
+        display: flex;
+        /* Always show both on desktop */
+    }
+
+    .hidden-mobile {
+        display: flex;
+    }
+
+    .mobile-tabs {
+        display: none;
+        /* Hide tabs on desktop */
+    }
+}
+
+/* Mobile Tabs */
+.mobile-tabs {
+    display: flex;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-1);
+    margin-bottom: var(--spacing-4);
+}
+
+.tab-button {
+    flex: 1;
+    padding: var(--spacing-3);
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.tab-button.active {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Car Naming */
+.check-name-container {
+    margin-bottom: var(--spacing-2);
+}
+
+.car-name-input {
+    width: 100%;
+    padding: var(--spacing-3);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--color-border);
+    border-radius: 0;
+    text-align: center;
+}
+
+.car-name-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+/* Results Mini Card (for comparison) */
+.results-card-mini .primary-result {
+    padding: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+
+.results-card-mini .big-number {
+    font-size: var(--font-size-2xl);
+}
+
+/* Forms */
+.input-card {
+    background: var(--color-surface);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.input-group {
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-4);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.input-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.input-group h3 {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-4);
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+
+@media (min-width: 640px) {
+    .input-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+input,
+select {
+    padding: var(--spacing-3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--color-primary);
+    border-color: transparent;
+}
+
+/* Results */
+.primary-result {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-6);
+    background: var(--color-primary-dark);
+    border-radius: var(--radius-lg);
+    color: white;
+}
+
+.primary-result h2 {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    margin-bottom: var(--spacing-2);
+}
+
+.big-number {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-2);
+}
+
+.sub-text {
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-2) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}

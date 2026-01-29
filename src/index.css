@@ -1,0 +1,72 @@
+:root {
+  /* Color Palette - User Requested (Sky Blue & Slate) */
+  --color-primary: #38bdf8;
+  /* Sky Blue - Action */
+  --color-primary-dark: #0ea5e9;
+  /* Sky 500 - Slightly darker for contrast/backgrounds */
+  --color-secondary: #94a3b8;
+  /* Cool Gray */
+  --color-accent: #fbbf24;
+  /* Amber - Gold/Accent */
+
+  --color-success: #22c55e;
+  /* Emerald Green */
+  --color-error: #f43f5e;
+  /* Rose Red */
+
+  --color-background: #0f172a;
+  /* Deep Slate */
+  --color-surface: #1e293b;
+  /* Slate 800 - Card Surface */
+
+  --color-text: #f8fafc;
+  /* Ghost White */
+  --color-text-muted: #94a3b8;
+  /* Cool Gray */
+  --color-border: #334155;
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}

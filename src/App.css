@@ -307,3 +307,38 @@ select:focus {
 .breakdown-item:last-child {
     border-bottom: none;
 }
+
+/* Footer */
+.app-footer {
+    margin-top: var(--spacing-8);
+    padding: var(--spacing-6);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.footer-content h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-lg);
+}
+
+.footer-content p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-4);
+}
+
+.footer-content strong {
+    color: var(--color-text);
+}
+
+.footer-note {
+    font-style: italic;
+    opacity: 0.8;
+}

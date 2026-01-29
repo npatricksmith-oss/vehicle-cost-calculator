@@ -17,7 +17,8 @@ const INITIAL_CAR = {
   mpg: 25,
   gasPrice: 3.50,
   insuranceMonthly: 120,
-  maintenanceYearly: 800
+  maintenanceYearly: 800,
+  ownershipYears: 5
 };
 
 function App() {
@@ -45,13 +46,16 @@ function App() {
       const loan = calculateLoanDetails(car);
       const costs = calculateOwnershipCosts({
         ...car,
-        monthlyPayment: loan.monthlyPayment
+        monthlyPayment: loan.monthlyPayment,
+        loanTermMonths: car.loanTermMonths
       });
       return {
         loan,
         costs,
         totalMonthly: costs.totalMonthly,
-        total5Year: costs.total5Year
+        totalMonthly: costs.totalMonthly,
+        totalOwnershipCost: costs.totalOwnershipCost,
+        ownershipYears: costs.ownershipYears
       };
     });
     setResults(newResults);

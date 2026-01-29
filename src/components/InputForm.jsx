@@ -143,6 +143,15 @@ export default function InputForm({ values, onChange }) {
                             onChange={handleChange}
                         />
                     </label>
+                    <label>
+                        Ownership (Years)
+                        <input
+                            type="number"
+                            name="ownershipYears"
+                            value={values.ownershipYears}
+                            onChange={handleChange}
+                        />
+                    </label>
                 </div>
             </section>
         </div>

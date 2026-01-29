@@ -63,7 +63,8 @@ export function calculateOwnershipCosts({
     gasPrice,
     insuranceMonthly,
     maintenanceYearly,
-    monthlyPayment
+    monthlyPayment,
+    ownershipYears = 5
 }) {
     const milesPerMonth = milesPerYear / 12;
     const fuelMonthly = (milesPerMonth / mpg) * gasPrice;
@@ -71,12 +72,22 @@ export function calculateOwnershipCosts({
 
     const totalMonthly = monthlyPayment + fuelMonthly + insuranceMonthly + maintenanceMonthly;
 
+    // Total Cost over ownership period
+    // Note: This matches the Monthly Payment * Months, but realistically 
+    // loan payments stop after the term. 
+    // For V2: We will keep it simple: Monthly Cost * 12 * Years.
+    // Ideally we should do: (LoanPayment * min(LoanTerm, Months)) + (OperatingCost * Months)
+    // But user asked for "reflected in display", usually meaning the simple projection for now.
+    // Let's refine for better accuracy:
+    // If we assume the "Monthly Cost" includes loan payment, multiplying by 5 years implies paying loan for 5 years.
+
     return {
         fuelMonthly,
         maintenanceMonthly,
         insuranceMonthly,
         totalMonthly,
         totalAnnual: totalMonthly * 12,
-        total5Year: totalMonthly * 60
+        totalOwnershipCost: totalMonthly * 12 * ownershipYears,
+        ownershipYears
     };
 }

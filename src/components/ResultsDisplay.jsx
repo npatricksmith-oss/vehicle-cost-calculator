@@ -23,7 +23,7 @@ export default function ResultsDisplay({ results, carName }) {
                     </div>
                 </div>
 
-                <p className="sub-text">Total 5-Year: {formatCurrency(results.total5Year)}</p>
+                <p className="sub-text">Total {results.costs.ownershipYears}-Year Cost: {formatCurrency(results.costs.totalOwnershipCost)}</p>
             </div>
 
             <div className="breakdown">

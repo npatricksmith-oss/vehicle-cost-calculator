@@ -17,6 +17,7 @@ export default function InputForm({ values, onChange }) {
                         <input
                             type="number"
                             name="price"
+                            step="100"
                             value={values.price}
                             onChange={handleChange}
                         />
@@ -37,6 +38,7 @@ export default function InputForm({ values, onChange }) {
                         <input
                             type="number"
                             name="fees"
+                            step="10"
                             value={values.fees}
                             onChange={handleChange}
                         />
@@ -52,6 +54,7 @@ export default function InputForm({ values, onChange }) {
                         <input
                             type="number"
                             name="downPayment"
+                            step="100"
                             value={values.downPayment}
                             onChange={handleChange}
                         />
@@ -61,6 +64,7 @@ export default function InputForm({ values, onChange }) {
                         <input
                             type="number"
                             name="tradeIn"
+                            step="100"
                             value={values.tradeIn}
                             onChange={handleChange}
                         />
@@ -98,6 +102,7 @@ export default function InputForm({ values, onChange }) {
                         <input
                             type="number"
                             name="milesPerYear"
+                            step="100"
                             value={values.milesPerYear}
                             onChange={handleChange}
                         />
@@ -139,6 +144,7 @@ export default function InputForm({ values, onChange }) {
                         <input
                             type="number"
                             name="maintenanceYearly"
+                            step="100"
                             value={values.maintenanceYearly}
                             onChange={handleChange}
                         />

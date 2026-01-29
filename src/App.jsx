@@ -114,6 +114,21 @@ function App() {
           </div>
         ))}
       </main>
+
+      <footer className="app-footer">
+        <div className="footer-content">
+          <h3>How it Works</h3>
+          <p>
+            The <strong>Total Ownership Cost</strong> is smarter than a simple monthly multiplier.
+            It calculates your <em>Loan Payments</em> only for the specific term of the loan (e.g. 5 years),
+            while adding your <em>Operating Costs</em> (Gas, Insurance, Maintenance) for the full
+            <strong> Ownership Duration</strong> you select.
+          </p>
+          <p className="footer-note">
+            This gives you a realistic view of long-term savings when you keep a car after it is paid off.
+          </p>
+        </div>
+      </footer>
     </div>
   )
 }

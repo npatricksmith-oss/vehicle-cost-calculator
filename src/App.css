@@ -91,24 +91,61 @@
 /* Car Naming */
 .check-name-container {
     margin-bottom: var(--spacing-2);
+    position: relative;
+    /* Context for absolute icon */
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .car-name-input {
     width: 100%;
     padding: var(--spacing-3);
+    padding-right: var(--spacing-8);
+    /* Make room for icon */
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--color-accent);
     background: transparent;
     border: none;
-    border-bottom: 2px solid var(--color-border);
-    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    /* Invisible border by default */
+    border-radius: var(--radius-sm);
     text-align: center;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    /* Suggest interaction */
+}
+
+/* Show border on hover/focus to invite edit */
+.car-name-input:hover {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .car-name-input:focus {
-    border-color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.05);
     outline: none;
+    cursor: text;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-muted);
+    pointer-events: none;
+    /* Let clicks pass through to input */
+    opacity: 0.5;
+    transition: opacity var(--transition-fast);
+}
+
+.check-name-container:hover .edit-icon {
+    opacity: 1;
+    color: var(--color-primary);
 }
 
 /* Results Mini Card (for comparison) */

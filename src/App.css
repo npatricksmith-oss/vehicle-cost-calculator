@@ -193,17 +193,50 @@ select:focus {
 }
 
 .primary-result h2 {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     opacity: 0.9;
-    margin-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+}
+
+.result-row-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+
+.result-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metric-label {
+    opacity: 0.8;
+    margin-bottom: var(--spacing-1);
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 .big-number {
     font-size: var(--font-size-3xl);
     font-weight: 800;
-    margin-bottom: var(--spacing-2);
+    line-height: 1.1;
+}
+
+.secondary-metric {
+    font-size: var(--font-size-2xl);
+    opacity: 0.9;
+}
+
+.result-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .sub-text {

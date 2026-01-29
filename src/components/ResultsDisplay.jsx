@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ResultsDisplay({ results }) {
+export default function ResultsDisplay({ results, carName }) {
     if (!results) return null;
 
     const formatCurrency = (val) =>
@@ -9,8 +9,20 @@ export default function ResultsDisplay({ results }) {
     return (
         <div className="results-container">
             <div className="primary-result">
-                <h2>{results.isComparison ? 'Monthly Cost' : 'Estimated Monthly Cost'}</h2>
-                <div className="big-number">{formatCurrency(results.totalMonthly)}</div>
+                <h2>{carName ? carName : 'Monthly Cost'}</h2>
+
+                <div className="result-row-primary">
+                    <div className="result-metric">
+                        <span className="metric-label">Total Ownership</span>
+                        <div className="big-number">{formatCurrency(results.totalMonthly)}</div>
+                    </div>
+                    <div className="result-divider"></div>
+                    <div className="result-metric">
+                        <span className="metric-label">Loan Only</span>
+                        <div className="big-number secondary-metric">{formatCurrency(results.loan.monthlyPayment)}</div>
+                    </div>
+                </div>
+
                 <p className="sub-text">Total 5-Year: {formatCurrency(results.total5Year)}</p>
             </div>
 

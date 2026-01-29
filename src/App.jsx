@@ -94,7 +94,7 @@ function App() {
             </div>
 
             <div className="card results-card-mini">
-              <ResultsDisplay results={results[index]} isComparison={true} />
+              <ResultsDisplay results={results[index]} carName={car.name} isComparison={true} />
             </div>
 
             <div className="card input-card">

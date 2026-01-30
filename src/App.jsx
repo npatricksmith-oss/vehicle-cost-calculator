@@ -7,7 +7,7 @@ import { calculateLoanDetails, calculateOwnershipCosts } from './utils/calculate
 const INITIAL_CAR = {
   name: 'Vehicle 1',
   price: 30000,
-  salesTaxRate: 7,
+  salesTaxRate: 8,
   fees: 500,
   downPayment: 5000,
   tradeIn: 0,

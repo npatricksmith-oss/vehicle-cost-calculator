@@ -9,32 +9,32 @@ export default function ResultsDisplay({ results, carName }) {
     return (
         <div className="results-container">
             <div className="primary-result">
-                <h2>{carName ? carName : 'Monthly Cost'}</h2>
+                <h2>Loan Details</h2>
 
                 <div className="key-metrics-grid">
                     <div className="key-metric-item">
-                        <span className="key-metric-label">Monthly Pmt</span>
+                        <span className="key-metric-label">Monthly Loan Payment</span>
                         <div className="key-metric-value highlight">{formatCurrency(results.loan.monthlyPayment)}</div>
                     </div>
                     <div className="key-metric-item">
-                        <span className="key-metric-label">Vehicle Price</span>
+                        <span className="key-metric-label">Dealer Vehicle Price</span>
                         <div className="key-metric-value">{formatCurrency(results.loan.price)}</div>
                     </div>
                     <div className="key-metric-item">
-                        <span className="key-metric-label">APR</span>
-                        <div className="key-metric-value">{results.loan.interestRate}%</div>
+                        <span className="key-metric-label">APR / Term</span>
+                        <div className="key-metric-value">{results.loan.interestRate}% / {results.loan.loanTermMonths} mo</div>
                     </div>
                 </div>
 
                 <div className="result-row-primary">
                     <div className="result-metric">
-                        <span className="metric-label">{results.costs.ownershipYears}-Year Cost</span>
+                        <span className="metric-label">{results.costs.ownershipYears}-Year Total Cost</span>
                         <div className="big-number">{formatCurrency(results.totalOwnershipCost)}</div>
                     </div>
                 </div>
 
                 <div className="tco-breakdown">
-                    <h4>Cost Components</h4>
+                    <h4>Total Cost of Ownership ({results.costs.ownershipYears} Years)</h4>
                     <div className="breakdown-item">
                         <span>Down Payment</span>
                         <span>{formatCurrency(results.breakdown.downPayment)}</span>

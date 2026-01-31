@@ -64,22 +64,26 @@ export function calculateOwnershipCosts({
     insuranceMonthly,
     maintenanceYearly,
     monthlyPayment,
-    ownershipYears = 5
+    ownershipYears = 5,
+    loanTermMonths = 60
 }) {
     const milesPerMonth = milesPerYear / 12;
     const fuelMonthly = (milesPerMonth / mpg) * gasPrice;
     const maintenanceMonthly = maintenanceYearly / 12;
 
     const totalMonthly = monthlyPayment + fuelMonthly + insuranceMonthly + maintenanceMonthly;
+    const totalLoanPayments = monthlyPayment * Math.min(monthlyPayment > 0 ? loanTermMonths : 0, ownershipYears * 12);
 
-    // Total Cost over ownership period
-    // Note: This matches the Monthly Payment * Months, but realistically 
-    // loan payments stop after the term. 
-    // For V2: We will keep it simple: Monthly Cost * 12 * Years.
-    // Ideally we should do: (LoanPayment * min(LoanTerm, Months)) + (OperatingCost * Months)
-    // But user asked for "reflected in display", usually meaning the simple projection for now.
-    // Let's refine for better accuracy:
-    // If we assume the "Monthly Cost" includes loan payment, multiplying by 5 years implies paying loan for 5 years.
+    // Detailed Breakdown Calculation
+    const totalFuelCost = fuelMonthly * 12 * ownershipYears;
+    const totalInsuranceCost = insuranceMonthly * 12 * ownershipYears;
+    const totalMaintenanceCost = maintenanceMonthly * 12 * ownershipYears;
+    // We need to pass in downPayment and taxAmount/fees to get true TCO, but function signature might miss them.
+    // Let's rely on the caller passing 'loan' details or we update signature?
+    // The previous design separated them.
+    // To strictly sum components, we need to return the components we CALCULATE here.
+    // The caller (App.jsx) combines this with loan details.
+    // However, to make it easier for the UI, let's just return the operating costs totals here.
 
     return {
         fuelMonthly,
@@ -87,7 +91,13 @@ export function calculateOwnershipCosts({
         insuranceMonthly,
         totalMonthly,
         totalAnnual: totalMonthly * 12,
-        totalOwnershipCost: totalMonthly * 12 * ownershipYears,
-        ownershipYears
+        totalOwnershipCost: totalMonthly * 12 * ownershipYears, // Legacy simple projection
+        ownershipYears,
+        // New granular totals for TCO summation
+        totalFuelCost,
+        totalInsuranceCost,
+        totalMaintenanceCost,
+        // Helpfully return the loan payment total for the ownership period (capped at loan term)
+        totalLoanPaymentsForDuration: monthlyPayment * Math.min(monthlyPayment > 0 ? loanTermMonths : 0, ownershipYears * 12)
     };
 }

@@ -11,11 +11,11 @@ const INITIAL_CAR = {
   fees: 500,
   downPayment: 5000,
   tradeIn: 0,
-  interestRate: 6.5,
+  interestRate: 5.0,
   loanTermMonths: 60,
   milesPerYear: 12000,
   mpg: 25,
-  gasPrice: 3.50,
+  gasPrice: 3.00,
   insuranceMonthly: 120,
   maintenanceYearly: 800,
   ownershipYears: 5
@@ -49,13 +49,50 @@ function App() {
         monthlyPayment: loan.monthlyPayment,
         loanTermMonths: car.loanTermMonths
       });
+
+      // Strict TCO Summation
+      // TCO = Loan Payments (during ownership) + Down Payment + Fees + Fuel + Insurance + Maintenance
+      // Note: Tax is part of 'Fees' implicitly if we sum (Tax + Fees) or if we consider Down Payment + Loan Amount?
+      // Wait, Loan Amount = (Price + Tax + Fees - Down - Trade).
+      // Total Paid for Car Hardware = Down Payment + Total Loan Payments (Principal + Interest)
+      // Actually, Total Loan Payments cover the Amount Financed.
+      // So Cost = Down Payment + Total Loan Payments + Operating Costs.
+
+      const totalLoanCost = costs.totalLoanPaymentsForDuration;
+      const totalUpfront = car.downPayment + (car.fees + loan.taxAmount - loan.taxAmount); // Wait, fees/tax usually folded into loan or paid upfront?
+      // Our logic in calculateLoanDetails:
+      // totalUpfrontCost = price + tax + fees
+      // loanPrincipal = totalUpfrontCost - downPayment - tradeIn
+      //
+      // So if I pay Down Payment, I pay it.
+      // If I pay Loan, I pay it.
+      // Any remaining upfront? No, it's all in the principal if not covered by down payment.
+      // So TCO = Down Payment + Loan Payments + Operating Costs.
+      // BUT, what if Trade In? Trade In "pays" for some. Is it a cost? No, it's value used.
+      // The cost to YOU is the cash you part with.
+      // So TCO = Down Payment + (Loan Payments) + Fuel + Ins + Maint.
+      // (Trade in is an opportunity cost maybe, but usually treated as a discount).
+
+      const grandTotalOwnershipCost =
+        car.downPayment +
+        totalLoanCost +
+        costs.totalFuelCost +
+        costs.totalInsuranceCost +
+        costs.totalMaintenanceCost;
+
       return {
         loan,
         costs,
         totalMonthly: costs.totalMonthly,
-        totalMonthly: costs.totalMonthly,
-        totalOwnershipCost: costs.totalOwnershipCost,
-        ownershipYears: costs.ownershipYears
+        totalOwnershipCost: grandTotalOwnershipCost,
+        ownershipYears: costs.ownershipYears,
+        breakdown: {
+          downPayment: car.downPayment,
+          loanCost: totalLoanCost,
+          fuel: costs.totalFuelCost,
+          insurance: costs.totalInsuranceCost,
+          maintenance: costs.totalMaintenanceCost
+        }
       };
     });
     setResults(newResults);

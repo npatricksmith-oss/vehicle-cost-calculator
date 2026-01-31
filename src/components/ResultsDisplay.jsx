@@ -13,26 +13,43 @@ export default function ResultsDisplay({ results, carName }) {
 
                 <div className="result-row-primary">
                     <div className="result-metric">
-                        <span className="metric-label">Total Ownership</span>
-                        <div className="big-number">{formatCurrency(results.totalMonthly)}</div>
-                    </div>
-                    <div className="result-divider"></div>
-                    <div className="result-metric">
-                        <span className="metric-label">Loan Only</span>
-                        <div className="big-number secondary-metric">{formatCurrency(results.loan.monthlyPayment)}</div>
+                        <span className="metric-label">{results.costs.ownershipYears}-Year Cost</span>
+                        <div className="big-number">{formatCurrency(results.totalOwnershipCost)}</div>
                     </div>
                 </div>
 
-                <div className="result-row-secondary">
-                    <span className="metric-label--small">Amount Financed: </span>
-                    <span className="financed-amount">{formatCurrency(results.loan.loanAmount)}</span>
+                <div className="tco-breakdown">
+                    <h4>Cost Components</h4>
+                    <div className="breakdown-item">
+                        <span>Down Payment</span>
+                        <span>{formatCurrency(results.breakdown.downPayment)}</span>
+                    </div>
+                    <div className="breakdown-item">
+                        <span>Loan Payments</span>
+                        <span>{formatCurrency(results.breakdown.loanCost)}</span>
+                    </div>
+                    <div className="breakdown-item">
+                        <span>Fuel</span>
+                        <span>{formatCurrency(results.breakdown.fuel)}</span>
+                    </div>
+                    <div className="breakdown-item">
+                        <span>Insurance</span>
+                        <span>{formatCurrency(results.breakdown.insurance)}</span>
+                    </div>
+                    <div className="breakdown-item">
+                        <span>Maintenance</span>
+                        <span>{formatCurrency(results.breakdown.maintenance)}</span>
+                    </div>
+                    <div className="breakdown-divider"></div>
+                    <div className="breakdown-item total-row">
+                        <span><strong>Total</strong></span>
+                        <span><strong>{formatCurrency(results.totalOwnershipCost)}</strong></span>
+                    </div>
                 </div>
-
-                <p className="sub-text">Total {results.costs.ownershipYears}-Year Cost: {formatCurrency(results.costs.totalOwnershipCost)}</p>
             </div>
 
             <div className="breakdown">
-                <h3>Monthly Breakdown</h3>
+                <h3>Monthly Estimates</h3>
                 <div className="breakdown-item">
                     <span>Loan Payment</span>
                     <span>{formatCurrency(results.loan.monthlyPayment)}</span>

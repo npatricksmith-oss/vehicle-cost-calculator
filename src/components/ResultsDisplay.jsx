@@ -11,6 +11,21 @@ export default function ResultsDisplay({ results, carName }) {
             <div className="primary-result">
                 <h2>{carName ? carName : 'Monthly Cost'}</h2>
 
+                <div className="key-metrics-grid">
+                    <div className="key-metric-item">
+                        <span className="key-metric-label">Monthly Pmt</span>
+                        <div className="key-metric-value highlight">{formatCurrency(results.loan.monthlyPayment)}</div>
+                    </div>
+                    <div className="key-metric-item">
+                        <span className="key-metric-label">Vehicle Price</span>
+                        <div className="key-metric-value">{formatCurrency(results.costs.price)}</div>
+                    </div>
+                    <div className="key-metric-item">
+                        <span className="key-metric-label">APR</span>
+                        <div className="key-metric-value">{results.loan.interestRate}%</div>
+                    </div>
+                </div>
+
                 <div className="result-row-primary">
                     <div className="result-metric">
                         <span className="metric-label">{results.costs.ownershipYears}-Year Cost</span>

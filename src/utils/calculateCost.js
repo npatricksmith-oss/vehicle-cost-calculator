@@ -50,7 +50,10 @@ export function calculateLoanDetails({
         loanAmount: loanPrincipal,
         totalInterest,
         totalCostWithInterest: totalUpfrontCost + totalInterest,
-        taxAmount
+        totalCostWithInterest: totalUpfrontCost + totalInterest,
+        taxAmount,
+        interestRate,
+        price
     };
 }
 

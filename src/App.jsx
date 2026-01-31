@@ -9,7 +9,7 @@ const INITIAL_CAR = {
   price: 30000,
   salesTaxRate: 8,
   fees: 500,
-  downPayment: 5000,
+  downPayment: 10000,
   tradeIn: 0,
   interestRate: 5.0,
   loanTermMonths: 60,
@@ -24,8 +24,8 @@ const INITIAL_CAR = {
 function App() {
   // State for 2 Cars
   const [cars, setCars] = useState([
-    { ...INITIAL_CAR, id: 0 },
-    { ...INITIAL_CAR, id: 1, name: 'Vehicle 2', price: 35000 } // Default 2nd car slightly different
+    { ...INITIAL_CAR, id: 0, name: 'Outback Touring XT', price: 51279, mpg: 24, downPayment: 10000 },
+    { ...INITIAL_CAR, id: 1, name: 'Forester Hybrid', price: 42570, mpg: 35, interestRate: 0, downPayment: 10000 } // $46,070 - $3,500 off
   ]);
 
   const [activeTab, setActiveTab] = useState(0); // For mobile: 0 or 1

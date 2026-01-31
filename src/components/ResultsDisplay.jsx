@@ -18,7 +18,7 @@ export default function ResultsDisplay({ results, carName }) {
                     </div>
                     <div className="key-metric-item">
                         <span className="key-metric-label">Vehicle Price</span>
-                        <div className="key-metric-value">{formatCurrency(results.costs.price)}</div>
+                        <div className="key-metric-value">{formatCurrency(results.loan.price)}</div>
                     </div>
                     <div className="key-metric-item">
                         <span className="key-metric-label">APR</span>
